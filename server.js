@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import connect from './database/connect.js';
-import router from '../router/route.js';
+import router from './router/route.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
