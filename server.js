@@ -4,8 +4,22 @@ import morgan from 'morgan';
 import connect from './database/connect.js';
 import router from '../router/route.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+app.use(express.static(path.join(__dirname, './client/build')));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
+
 
 app.use(express.json());
 app.use(cors());
